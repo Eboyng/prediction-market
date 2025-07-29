@@ -75,6 +75,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the stakes that belong to the user.
+     */
+    public function stakes()
+    {
+        return $this->hasMany(Stake::class);
+    }
+
+    /**
      * Get the user's wallet balance in kobo
      */
     public function getWalletBalance(): int

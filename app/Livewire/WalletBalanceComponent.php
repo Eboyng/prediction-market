@@ -123,7 +123,7 @@ class WalletBalanceComponent extends Component
         $user = Auth::user();
         return $user->stakes()
             ->where('status', 'won')
-            ->sum('payout') / 100;
+            ->sum('payout_amount') / 100;
     }
 
     /**
