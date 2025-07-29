@@ -1,77 +1,77 @@
 <div class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900">
     <!-- Hero Section -->
-    <section class="relative overflow-hidden">
+    <section class="relative overflow-hidden py-16 lg:py-24">
         <div class="absolute inset-0 bg-gradient-to-r from-indigo-600/10 to-purple-600/10 dark:from-indigo-400/5 dark:to-purple-400/5"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <!-- Animated Logo/Icon -->
-                <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl mb-8 transform hover:scale-110 transition-transform duration-300">
-                    <svg class="w-10 h-10 text-white animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                <div class="inline-flex items-center justify-center w-20 h-20 lg:w-24 lg:h-24 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl mb-8 lg:mb-12 transform hover:scale-110 transition-transform duration-300">
+                    <svg class="w-10 h-10 lg:w-12 lg:h-12 text-white animate-pulse" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"/>
                         <path d="M19 15L20.09 18.26L24 19L20.09 19.74L19 23L17.91 19.74L14 19L17.91 18.26L19 15Z"/>
                         <path d="M5 15L6.09 18.26L10 19L6.09 19.74L5 23L3.91 19.74L0 19L3.91 18.26L5 15Z"/>
                     </svg>
                 </div>
 
-                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 lg:mb-8">
                     <span class="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                         PredictNaira
                     </span>
                 </h1>
                 
-                <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+                <p class="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-12 lg:mb-16 max-w-4xl mx-auto leading-relaxed">
                     Nigeria's premier prediction market platform. Make informed predictions, earn rewards, and join thousands of traders.
                 </p>
 
                 <!-- Platform Stats with Animation -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-12">
-                    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
-                        <div class="text-2xl md:text-3xl font-bold text-indigo-600 dark:text-indigo-400">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12 lg:mb-16 max-w-5xl mx-auto">
+                    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 lg:p-8 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+                        <div class="text-2xl md:text-3xl lg:text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">
                             {{ $this->formatNumber($platformStats['total_users']) }}
                         </div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">Active Traders</div>
+                        <div class="text-sm lg:text-base text-gray-600 dark:text-gray-400">Active Traders</div>
                     </div>
                     
-                    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
-                        <div class="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400">
+                    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 lg:p-8 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+                        <div class="text-2xl md:text-3xl lg:text-4xl font-bold text-green-600 dark:text-green-400 mb-2">
                             {{ $this->formatNumber($platformStats['active_markets']) }}
                         </div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">Live Markets</div>
+                        <div class="text-sm lg:text-base text-gray-600 dark:text-gray-400">Live Markets</div>
                     </div>
                     
-                    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
-                        <div class="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">
+                    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 lg:p-8 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+                        <div class="text-2xl md:text-3xl lg:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">
                             {{ $this->formatCurrency($platformStats['total_volume']) }}
                         </div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">Total Volume</div>
+                        <div class="text-sm lg:text-base text-gray-600 dark:text-gray-400">Total Volume</div>
                     </div>
                     
-                    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
-                        <div class="text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400">
+                    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 lg:p-8 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+                        <div class="text-2xl md:text-3xl lg:text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">
                             {{ $this->formatCurrency($platformStats['total_payouts']) }}
                         </div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">Paid Out</div>
+                        <div class="text-sm lg:text-base text-gray-600 dark:text-gray-400">Paid Out</div>
                     </div>
                 </div>
 
                 <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <div class="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center">
                     @auth
-                        <a href="/dashboard" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <a href="/dashboard" class="inline-flex items-center px-8 py-4 lg:px-10 lg:py-5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-lg">
+                            <svg class="w-5 h-5 lg:w-6 lg:h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
                             </svg>
                             Go to Dashboard
                         </a>
                     @else
-                        <a href="/register" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <a href="/register" class="inline-flex items-center px-8 py-4 lg:px-10 lg:py-5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-lg">
+                            <svg class="w-5 h-5 lg:w-6 lg:h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"/>
                             </svg>
                             Start Predicting
                         </a>
-                        <a href="/login" class="inline-flex items-center px-8 py-4 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white font-semibold rounded-xl hover:bg-white dark:hover:bg-gray-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <a href="/login" class="inline-flex items-center px-8 py-4 lg:px-10 lg:py-5 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white font-semibold rounded-xl hover:bg-white dark:hover:bg-gray-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm text-lg">
+                            <svg class="w-5 h-5 lg:w-6 lg:h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                             </svg>
                             Sign In
@@ -83,17 +83,18 @@
     </section>
 
     <!-- Category Filter -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="flex flex-wrap gap-3 justify-center">
-            <button 
-                wire:click="filterByCategory(null)"
-                class="px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 {{ $selectedCategory === null ? 'bg-indigo-600 text-white shadow-lg' : 'bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700' }}"
-            >
-                <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9l-6.91 1.01L12 16l-3.09-6.99L2 9l6.91-1.74L12 2z"/>
-                </svg>
-                All Markets
-            </button>
+    <section class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border-y border-gray-200/50 dark:border-gray-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+            <div class="flex flex-wrap gap-3 lg:gap-4 justify-center">
+                <button 
+                    wire:click="filterByCategory(null)"
+                    class="px-6 py-3 lg:px-8 lg:py-4 rounded-full font-medium transition-all duration-300 transform hover:scale-105 {{ $selectedCategory === null ? 'bg-indigo-600 text-white shadow-lg' : 'bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700' }}"
+                >
+                    <svg class="w-4 h-4 lg:w-5 lg:h-5 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9l-6.91 1.01L12 16l-3.09-6.99L2 9l6.91-1.74L12 2z"/>
+                    </svg>
+                    All Markets
+                </button>
             
             @foreach($categories as $category)
                 <button 
@@ -110,17 +111,18 @@
     </section>
 
     <!-- Featured Markets -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                🔥 Featured Markets
-            </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400">
-                High-volume markets with the most activity
-            </p>
-        </div>
+    <section class="py-16 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 lg:mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                    🔥 Featured Markets
+                </h2>
+                <p class="text-lg lg:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    High-volume markets with the most activity from our community
+                </p>
+            </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             @forelse($featuredMarkets as $market)
                 <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50">
                     <!-- Market Header -->
@@ -219,6 +221,7 @@
                     <p class="text-gray-600 dark:text-gray-400">Check back soon for new prediction markets!</p>
                 </div>
             @endforelse
+            </div>
         </div>
     </section>
 
