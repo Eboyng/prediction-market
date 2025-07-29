@@ -30,17 +30,17 @@
                 <button 
                     type="button" 
                     wire:click="selectSide('no')"
-                    class="relative p-4 rounded-lg border-2 transition-all duration-200 {{ $selectedSide === 'no' ? 'border-red-500 bg-red-50 dark:bg-red-900/20' : 'border-gray-300 dark:border-gray-600 hover:border-red-300 dark:hover:border-red-700' }}"
+                    class="relative p-4 sm:p-6 rounded-xl border-2 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 {{ $selectedSide === 'no' ? 'border-red-500 bg-red-50 dark:bg-red-900/20 shadow-lg' : 'border-gray-300 dark:border-gray-600 hover:border-red-300 dark:hover:border-red-700 hover:shadow-md' }}"
                 >
                     <div class="text-center">
-                        <div class="text-lg font-bold text-red-700 dark:text-red-300 mb-1">
+                        <div class="text-lg sm:text-xl font-bold text-red-700 dark:text-red-300 mb-2">
                             NO
                         </div>
                         <div class="text-sm text-gray-600 dark:text-gray-400 mb-2">
                             {{ $this->calculateOdds($market, 'no') }}x odds
                         </div>
                         @if($selectedSide === 'no')
-                            <div class="absolute top-2 right-2">
+                            <div class="absolute top-3 right-3">
                                 <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                                 </svg>

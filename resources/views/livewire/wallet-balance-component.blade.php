@@ -1,22 +1,22 @@
-<div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-    <!-- Header -->
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-4 sm:p-6">
+    <!-- Enhanced Header -->
     <div class="flex items-center justify-between mb-6">
         <div class="flex items-center">
-            <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-blue-600 rounded-lg flex items-center justify-center mr-3">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-green-500 to-blue-600 rounded-xl flex items-center justify-center mr-3 shadow-lg">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
                 </svg>
             </div>
             <div>
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Wallet Balance</h3>
+                <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Wallet Balance</h3>
                 <p class="text-sm text-gray-600 dark:text-gray-400">Your available funds</p>
             </div>
         </div>
         
-        <!-- Refresh Button -->
+        <!-- Enhanced Refresh Button -->
         <button 
             wire:click="refreshBalance" 
-            class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200"
+            class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
             title="Refresh balance"
         >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" wire:loading.class="animate-spin" wire:target="refreshBalance">
@@ -25,9 +25,9 @@
         </button>
     </div>
 
-    <!-- Balance Display -->
+    <!-- Enhanced Balance Display -->
     <div class="text-center mb-6">
-        <div class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+        <div class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2">
             ₦{{ number_format($this->getFormattedBalance()) }}
         </div>
         <div class="text-sm text-gray-600 dark:text-gray-400">
@@ -35,19 +35,19 @@
         </div>
     </div>
 
-    <!-- Quick Stats -->
-    <div class="grid grid-cols-2 gap-4 mb-6">
-        <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4 text-center border border-green-200 dark:border-green-800">
-            <div class="text-lg font-semibold text-green-700 dark:text-green-300">
+    <!-- Enhanced Quick Stats -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6">
+        <div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-4 text-center border border-green-200 dark:border-green-800 transition-all duration-200 hover:shadow-md">
+            <div class="text-base sm:text-lg font-semibold text-green-700 dark:text-green-300">
                 ₦{{ number_format($this->getTotalWinnings()) }}
             </div>
-            <div class="text-xs text-green-600 dark:text-green-400">Total Winnings</div>
+            <div class="text-xs sm:text-sm text-green-600 dark:text-green-400">Total Winnings</div>
         </div>
-        <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 text-center border border-blue-200 dark:border-blue-800">
-            <div class="text-lg font-semibold text-blue-700 dark:text-blue-300">
+        <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 text-center border border-blue-200 dark:border-blue-800 transition-all duration-200 hover:shadow-md">
+            <div class="text-base sm:text-lg font-semibold text-blue-700 dark:text-blue-300">
                 ₦{{ number_format($this->getTotalStakes()) }}
             </div>
-            <div class="text-xs text-blue-600 dark:text-blue-400">Total Staked</div>
+            <div class="text-xs sm:text-sm text-blue-600 dark:text-blue-400">Total Staked</div>
         </div>
     </div>
 
