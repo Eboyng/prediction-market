@@ -92,7 +92,7 @@
 <body class="font-sans antialiased bg-gray-50 dark:bg-gray-900">
     <div class="min-h-screen flex flex-col">
         <!-- Modern Header -->
-        @include('partials.header')
+        <livewire:header-component />
 
         <!-- Page Heading -->
         @if (isset($header))
