@@ -20,7 +20,13 @@ class LandingPageComponent extends Component
     public $featuredMarkets = [];
     public $trendingMarkets = [];
     public $categories = [];
-    public $platformStats = [];
+    public $platformStats = [
+        'total_users' => 0,
+        'active_markets' => 0,
+        'total_volume' => 0,
+        'total_payouts' => 0,
+        'markets_settled' => 0,
+    ];
     public $selectedCategory = null;
     public $showLoginModal = false;
     public $selectedMarketForBet = null;
@@ -50,13 +56,21 @@ class LandingPageComponent extends Component
             ->limit(6)
             ->get()
             ->map(function ($market) {
-                // Calculate odds for both sides and store them
-                $yesOdds = $this->oddsService->calculateOdds($market, 'yes');
-                $noOdds = $this->oddsService->calculateOdds($market, 'no');
-                $market->current_odds = [
-                    'yes' => $yesOdds,
-                    'no' => $noOdds
-                ];
+                try {
+                    // Calculate odds for both sides and store them
+                    $yesOdds = $this->oddsService->calculateOdds($market, 'yes');
+                    $noOdds = $this->oddsService->calculateOdds($market, 'no');
+                    $market->current_odds = [
+                        'yes' => $yesOdds ?? 0.5,
+                        'no' => $noOdds ?? 0.5
+                    ];
+                } catch (\Exception $e) {
+                    // Fallback to default odds if calculation fails
+                    $market->current_odds = [
+                        'yes' => 0.5,
+                        'no' => 0.5
+                    ];
+                }
                 $market->total_volume = $market->stakes_sum_amount ?? 0;
                 $market->participant_count = $market->stakes_count ?? 0;
                 return $market;
@@ -113,13 +127,21 @@ class LandingPageComponent extends Component
                 ->limit(6)
                 ->get()
                 ->map(function ($market) {
-                    // Calculate odds for both sides and store them
-                    $yesOdds = $this->oddsService->calculateOdds($market, 'yes');
-                    $noOdds = $this->oddsService->calculateOdds($market, 'no');
-                    $market->current_odds = [
-                        'yes' => $yesOdds,
-                        'no' => $noOdds
-                    ];
+                    try {
+                        // Calculate odds for both sides and store them
+                        $yesOdds = $this->oddsService->calculateOdds($market, 'yes');
+                        $noOdds = $this->oddsService->calculateOdds($market, 'no');
+                        $market->current_odds = [
+                            'yes' => $yesOdds ?? 0.5,
+                            'no' => $noOdds ?? 0.5
+                        ];
+                    } catch (\Exception $e) {
+                        // Fallback to default odds if calculation fails
+                        $market->current_odds = [
+                            'yes' => 0.5,
+                            'no' => 0.5
+                        ];
+                    }
                     $market->total_volume = $market->stakes_sum_amount ?? 0;
                     $market->participant_count = $market->stakes_count ?? 0;
                     return $market;

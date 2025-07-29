@@ -104,7 +104,7 @@
         @endif
 
         <!-- Page Content -->
-        <main class="flex-1">
+        <main class="">
             {{ $slot }}
         </main>
 

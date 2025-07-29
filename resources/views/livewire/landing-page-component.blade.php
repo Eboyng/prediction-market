@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900">
+<div class="bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900">
     <!-- Hero Section -->
     <section class="relative overflow-hidden py-16 lg:py-24">
         <div class="absolute inset-0 bg-gradient-to-r from-indigo-600/10 to-purple-600/10 dark:from-indigo-400/5 dark:to-purple-400/5"></div>
@@ -27,28 +27,28 @@
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12 lg:mb-16 max-w-5xl mx-auto">
                     <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 lg:p-8 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
                         <div class="text-2xl md:text-3xl lg:text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">
-                            {{ $this->formatNumber($platformStats['total_users']) }}
+                            {{ $this->formatNumber($platformStats['total_users'] ?? 0) }}
                         </div>
                         <div class="text-sm lg:text-base text-gray-600 dark:text-gray-400">Active Traders</div>
                     </div>
                     
                     <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 lg:p-8 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
                         <div class="text-2xl md:text-3xl lg:text-4xl font-bold text-green-600 dark:text-green-400 mb-2">
-                            {{ $this->formatNumber($platformStats['active_markets']) }}
+                            {{ $this->formatNumber($platformStats['active_markets'] ?? 0) }}
                         </div>
                         <div class="text-sm lg:text-base text-gray-600 dark:text-gray-400">Live Markets</div>
                     </div>
                     
                     <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 lg:p-8 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
                         <div class="text-2xl md:text-3xl lg:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">
-                            {{ $this->formatCurrency($platformStats['total_volume']) }}
+                            {{ $this->formatCurrency($platformStats['total_volume'] ?? 0) }}
                         </div>
                         <div class="text-sm lg:text-base text-gray-600 dark:text-gray-400">Total Volume</div>
                     </div>
                     
                     <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 lg:p-8 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
                         <div class="text-2xl md:text-3xl lg:text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">
-                            {{ $this->formatCurrency($platformStats['total_payouts']) }}
+                            {{ $this->formatCurrency($platformStats['total_payouts'] ?? 0) }}
                         </div>
                         <div class="text-sm lg:text-base text-gray-600 dark:text-gray-400">Paid Out</div>
                     </div>
@@ -160,20 +160,20 @@
                         <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-3 text-center">
                             <div class="text-sm text-green-600 dark:text-green-400 font-medium mb-1">YES</div>
                             <div class="text-lg font-bold text-green-700 dark:text-green-300">
-                                {{ number_format($market->current_odds['yes'] * 100, 1) }}%
+                                {{ number_format(($market->current_odds['yes'] ?? 0.5) * 100, 1) }}%
                             </div>
                             <div class="text-xs text-green-600 dark:text-green-400">
-                                {{ number_format(1 / $market->current_odds['yes'], 2) }}x payout
+                                {{ number_format(1 / ($market->current_odds['yes'] ?? 0.5), 2) }}x payout
                             </div>
                         </div>
                         
                         <div class="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 text-center">
                             <div class="text-sm text-red-600 dark:text-red-400 font-medium mb-1">NO</div>
                             <div class="text-lg font-bold text-red-700 dark:text-red-300">
-                                {{ number_format($market->current_odds['no'] * 100, 1) }}%
+                                {{ number_format(($market->current_odds['no'] ?? 0.5) * 100, 1) }}%
                             </div>
                             <div class="text-xs text-red-600 dark:text-red-400">
-                                {{ number_format(1 / $market->current_odds['no'], 2) }}x payout
+                                {{ number_format(1 / ($market->current_odds['no'] ?? 0.5), 2) }}x payout
                             </div>
                         </div>
                     </div>
