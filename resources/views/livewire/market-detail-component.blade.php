@@ -1,13 +1,16 @@
 <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
-    <!-- Market Header -->
+    <!-- Enhanced Market Header -->
     <div class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-6">
+            <div class="flex flex-col space-y-6 lg:flex-row lg:items-start lg:justify-between lg:space-y-0">
                 <!-- Market Info -->
-                <div class="flex-1 mb-6 lg:mb-0 lg:pr-8">
-                    <!-- Breadcrumb -->
+                <div class="flex-1 lg:pr-8">
+                    <!-- Enhanced Breadcrumb -->
                     <nav class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
-                        <a href="{{ route('markets.index') }}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                        <a href="{{ route('markets.index') }}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                            </svg>
                             Markets
                         </a>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -16,19 +19,22 @@
                         <span class="text-gray-900 dark:text-white font-medium">{{ $market->category->name ?? 'General' }}</span>
                     </nav>
 
-                    <!-- Category Badge -->
-                    <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 mb-4">
+                    <!-- Enhanced Category Badge -->
+                    <div class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 mb-4 transition-all duration-200">
+                        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+                        </svg>
                         {{ $market->category->name ?? 'General' }}
                     </div>
 
-                    <!-- Market Question -->
-                    <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+                    <!-- Enhanced Market Question -->
+                    <h1 class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
                         {{ $market->question }}
                     </h1>
 
-                    <!-- Market Description -->
+                    <!-- Enhanced Market Description -->
                     @if($market->description)
-                        <p class="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                        <p class="text-base lg:text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
                             {{ $market->description }}
                         </p>
                     @endif

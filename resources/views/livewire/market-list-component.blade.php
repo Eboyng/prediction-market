@@ -1,38 +1,40 @@
 <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
-    <!-- Page Header -->
+    <!-- Page Header with Enhanced Mobile Design -->
     <div class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                <div class="mb-4 md:mb-0">
-                    <h1 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Markets</h1>
-                    <p class="text-gray-600 dark:text-gray-400 mt-1">Explore and bet on prediction markets</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-6">
+            <div class="flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0">
+                <div class="flex-1">
+                    <h1 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">Markets</h1>
+                    <p class="text-gray-600 dark:text-gray-400 mt-1 text-sm lg:text-base">Explore and bet on prediction markets</p>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <!-- Search -->
-                    <div class="relative">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+                    <!-- Search with improved mobile design -->
+                    <div class="relative flex-1 sm:flex-none">
                         <input 
                             type="text" 
                             wire:model.live="search" 
                             placeholder="Search markets..." 
-                            class="w-full md:w-64 pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            class="w-full sm:w-64 pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
                         >
-                        <svg class="absolute left-3 top-2.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="absolute left-3 top-3 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                         </svg>
                     </div>
+                    <!-- Dark Mode Toggle -->
+                    @livewire('dark-mode-toggle-component')
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Filters -->
+    <!-- Enhanced Mobile-Friendly Filters -->
     <div class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6">
+            <div class="flex flex-col space-y-4 lg:flex-row lg:items-center lg:space-y-0 lg:space-x-6">
                 <!-- Category Filter -->
-                <div class="flex items-center space-x-2">
-                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Category:</label>
-                    <select wire:model.live="categoryFilter" class="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <div class="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
+                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">Category:</label>
+                    <select wire:model.live="categoryFilter" class="flex-1 sm:flex-none border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200">
                         <option value="">All Categories</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -41,9 +43,9 @@
                 </div>
 
                 <!-- Status Filter -->
-                <div class="flex items-center space-x-2">
-                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Status:</label>
-                    <select wire:model.live="statusFilter" class="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <div class="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
+                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">Status:</label>
+                    <select wire:model.live="statusFilter" class="flex-1 sm:flex-none border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200">
                         <option value="">All Status</option>
                         <option value="open">Open</option>
                         <option value="closed">Closed</option>
