@@ -16,7 +16,7 @@
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                         </svg>
-                        <span class="text-gray-900 dark:text-white font-medium">{{ $market->category->name ?? 'General' }}</span>
+                        <span class="text-gray-900 dark:text-white font-medium">{{ $this->market->category->name ?? 'General' }}</span>
                     </nav>
 
                     <!-- Enhanced Category Badge -->
@@ -24,18 +24,18 @@
                         <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
                         </svg>
-                        {{ $market->category->name ?? 'General' }}
+                        {{ $this->market->category->name ?? 'General' }}
                     </div>
 
                     <!-- Enhanced Market Question -->
                     <h1 class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
-                        {{ $market->question }}
+                        {{ $this->market->question }}
                     </h1>
 
                     <!-- Enhanced Market Description -->
-                    @if($market->description)
+                    @if($this->market->description)
                         <p class="text-base lg:text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                            {{ $market->description }}
+                            {{ $this->market->description }}
                         </p>
                     @endif
 
@@ -43,15 +43,15 @@
                     <div class="flex flex-wrap items-center gap-6 text-sm text-gray-600 dark:text-gray-400">
                         <!-- Status -->
                         <div class="flex items-center">
-                            @if($market->status === 'open')
+                            @if($this->market->status === 'open')
                                 <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
                                 <span class="text-green-600 dark:text-green-400 font-medium">Market Open</span>
-                            @elseif($market->status === 'closed')
+                            @elseif($this->market->status === 'closed')
                                 <div class="w-2 h-2 bg-red-400 rounded-full mr-2"></div>
                                 <span class="text-red-600 dark:text-red-400 font-medium">Market Closed</span>
                             @else
                                 <div class="w-2 h-2 bg-gray-400 rounded-full mr-2"></div>
-                                <span class="font-medium">{{ ucfirst($market->status) }}</span>
+                                <span class="font-medium">{{ ucfirst($this->market->status) }}</span>
                             @endif
                         </div>
 
@@ -60,19 +60,19 @@
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                             </svg>
-                            Created {{ $market->created_at->diffForHumans() }}
+                            Created {{ $this->market->created_at->diffForHumans() }}
                         </div>
 
                         <!-- Closing Date -->
-                        @if($market->closes_at)
+                        @if($this->market->closes_at)
                             <div class="flex items-center">
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                 </svg>
-                                @if($market->closes_at->isPast())
-                                    Closed {{ $market->closes_at->diffForHumans() }}
+                                @if($this->market->closes_at->isPast())
+                                    Closed {{ $this->market->closes_at->diffForHumans() }}
                                 @else
-                                    Closes {{ $market->closes_at->diffForHumans() }}
+                                    Closes {{ $this->market->closes_at->diffForHumans() }}
                                 @endif
                             </div>
                         @endif
@@ -87,32 +87,32 @@
                         <div class="grid grid-cols-2 gap-4 mb-6">
                             <div class="text-center">
                                 <div class="text-2xl font-bold text-gray-900 dark:text-white">
-                                    {{ $this->formatCurrency($market->total_volume ?? 0) }}
+                                    {{ $this->formatCurrency($this->marketStats['total_volume'] ?? 0) }}
                                 </div>
                                 <div class="text-sm text-gray-600 dark:text-gray-400">Total Volume</div>
                             </div>
                             <div class="text-center">
                                 <div class="text-2xl font-bold text-gray-900 dark:text-white">
-                                    {{ $market->participant_count ?? 0 }}
+                                    {{ $this->marketStats['total_traders'] ?? 0 }}
                                 </div>
                                 <div class="text-sm text-gray-600 dark:text-gray-400">Traders</div>
                             </div>
                         </div>
 
                         <!-- Current Odds -->
-                        @if($market->status === 'open')
+                        @if($this->market->status === 'open')
                             <div class="space-y-3">
                                 <h4 class="font-medium text-gray-900 dark:text-white">Current Odds</h4>
                                 <div class="grid grid-cols-2 gap-3">
                                     <div class="bg-green-100 dark:bg-green-900/30 rounded-lg p-3 text-center border border-green-200 dark:border-green-800">
                                         <div class="text-lg font-bold text-green-700 dark:text-green-300">
-                                            {{ $this->calculateOdds($market, 'yes') }}x
+                                            {{ number_format(1 / ($this->market->current_odds['yes'] ?? 0.5), 2) }}x
                                         </div>
                                         <div class="text-sm text-green-600 dark:text-green-400">YES</div>
                                     </div>
                                     <div class="bg-red-100 dark:bg-red-900/30 rounded-lg p-3 text-center border border-red-200 dark:border-red-800">
                                         <div class="text-lg font-bold text-red-700 dark:text-red-300">
-                                            {{ $this->calculateOdds($market, 'no') }}x
+                                            {{ number_format(1 / ($this->market->current_odds['no'] ?? 0.5), 2) }}x
                                         </div>
                                         <div class="text-sm text-red-600 dark:text-red-400">NO</div>
                                     </div>
@@ -131,11 +131,11 @@
             <!-- Left Column: Betting Interface -->
             <div class="lg:col-span-2 space-y-8">
                 <!-- Betting Card -->
-                @if($market->status === 'open')
+                @if($this->market->status === 'open')
                     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
                         <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-6">Place Your Bet</h2>
                         
-                        @livewire('stake-form-component', ['market' => $market])
+                        @livewire('stake-form-component', ['market' => $this->market])
                     </div>
                 @else
                     <!-- Market Closed Message -->
@@ -156,9 +156,9 @@
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
                     <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-6">Recent Activity</h2>
                     
-                    @if($recentStakes && $recentStakes->count() > 0)
-                        <div class="space-y-4">
-                            @foreach($recentStakes as $stake)
+                    @if($recentActivity && $recentActivity->count() > 0)
+                    <div class="space-y-4">
+                        @foreach($recentActivity as $stake)
                                 <div class="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                                     <div class="flex items-center space-x-3">
                                         <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">

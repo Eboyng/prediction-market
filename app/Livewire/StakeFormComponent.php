@@ -155,6 +155,41 @@ class StakeFormComponent extends Component
     }
 
     /**
+     * Calculate odds for a given market and side
+     */
+    public function calculateOdds(Market $market, string $side): float
+    {
+        $oddsService = app(OddsService::class);
+        return $oddsService->calculateOdds($market, $side);
+    }
+
+    /**
+     * Calculate potential payout
+     */
+    public function calculatePotentialPayout(): float
+    {
+        return $this->potentialPayout / 100; // Convert from kobo to naira
+    }
+
+    /**
+     * Select betting side
+     */
+    public function selectSide(string $side)
+    {
+        $this->side = $side;
+        $this->updateCalculations();
+    }
+
+    /**
+     * Set stake amount
+     */
+    public function setStakeAmount(int $amount)
+    {
+        $this->amount = $amount;
+        $this->updateCalculations();
+    }
+
+    /**
      * Show confirmation dialog
      */
     public function showConfirmation()

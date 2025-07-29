@@ -1,25 +1,25 @@
 <div class="bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900">
-    <!-- Hero Section -->
-    <section class="relative overflow-hidden py-16 lg:py-24">
+    <!-- Enhanced Hero Section -->
+    <section class="relative overflow-hidden py-12 sm:py-16 lg:py-24">
         <div class="absolute inset-0 bg-gradient-to-r from-indigo-600/10 to-purple-600/10 dark:from-indigo-400/5 dark:to-purple-400/5"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <!-- Animated Logo/Icon -->
-                <div class="inline-flex items-center justify-center w-20 h-20 lg:w-24 lg:h-24 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl mb-8 lg:mb-12 transform hover:scale-110 transition-transform duration-300">
-                    <svg class="w-10 h-10 lg:w-12 lg:h-12 text-white animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                <!-- Enhanced Animated Logo/Icon -->
+                <div class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl mb-6 sm:mb-8 lg:mb-12 transform hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <svg class="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-white animate-pulse" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"/>
                         <path d="M19 15L20.09 18.26L24 19L20.09 19.74L19 23L17.91 19.74L14 19L17.91 18.26L19 15Z"/>
                         <path d="M5 15L6.09 18.26L10 19L6.09 19.74L5 23L3.91 19.74L0 19L3.91 18.26L5 15Z"/>
                     </svg>
                 </div>
 
-                <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 lg:mb-8">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 lg:mb-8 px-4">
                     <span class="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                         PredictNaira
                     </span>
                 </h1>
                 
-                <p class="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-12 lg:mb-16 max-w-4xl mx-auto leading-relaxed">
+                <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 sm:mb-12 lg:mb-16 max-w-4xl mx-auto leading-relaxed px-4">
                     Nigeria's premier prediction market platform. Make informed predictions, earn rewards, and join thousands of traders.
                 </p>
 
@@ -54,23 +54,23 @@
                     </div>
                 </div>
 
-                <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center">
+                <!-- Enhanced CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center px-4">
                     @auth
-                        <a href="/dashboard" class="inline-flex items-center px-8 py-4 lg:px-10 lg:py-5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-lg">
+                        <a href="/dashboard" class="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-base sm:text-lg">
                             <svg class="w-5 h-5 lg:w-6 lg:h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
                             </svg>
                             Go to Dashboard
                         </a>
                     @else
-                        <a href="/register" class="inline-flex items-center px-8 py-4 lg:px-10 lg:py-5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-lg">
+                        <a href="/register" class="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-base sm:text-lg">
                             <svg class="w-5 h-5 lg:w-6 lg:h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"/>
                             </svg>
                             Start Predicting
                         </a>
-                        <a href="/login" class="inline-flex items-center px-8 py-4 lg:px-10 lg:py-5 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white font-semibold rounded-xl hover:bg-white dark:hover:bg-gray-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm text-lg">
+                        <a href="/login" class="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white font-semibold rounded-xl hover:bg-white dark:hover:bg-gray-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm text-base sm:text-lg">
                             <svg class="w-5 h-5 lg:w-6 lg:h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                             </svg>

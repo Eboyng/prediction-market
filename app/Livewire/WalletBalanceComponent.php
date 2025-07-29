@@ -104,6 +104,42 @@ class WalletBalanceComponent extends Component
     }
 
     /**
+     * Get formatted balance
+     */
+    public function getFormattedBalance()
+    {
+        return $this->balance / 100;
+    }
+
+    /**
+     * Get total winnings
+     */
+    public function getTotalWinnings()
+    {
+        if (!Auth::check()) {
+            return 0;
+        }
+        
+        $user = Auth::user();
+        return $user->stakes()
+            ->where('status', 'won')
+            ->sum('payout') / 100;
+    }
+
+    /**
+     * Get total stakes
+     */
+    public function getTotalStakes()
+    {
+        if (!Auth::check()) {
+            return 0;
+        }
+        
+        $user = Auth::user();
+        return $user->stakes()->sum('amount') / 100;
+    }
+
+    /**
      * Check if user has sufficient balance for amount
      */
     public function hasSufficientBalance($amountInKobo)

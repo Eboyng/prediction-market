@@ -102,7 +102,7 @@ class MarketDetailComponent extends Component
         return '₦' . number_format($amount / 100, 2);
     }
 
-    #[Title]
+    #[Title('Market Details - PredictNaira')]
     public function title()
     {
         return $this->market->question . ' - PredictNaira';

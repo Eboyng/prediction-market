@@ -8,7 +8,7 @@
                 <button 
                     type="button" 
                     wire:click="selectSide('yes')"
-                    class="relative p-4 sm:p-6 rounded-xl border-2 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 {{ $selectedSide === 'yes' ? 'border-green-500 bg-green-50 dark:bg-green-900/20 shadow-lg' : 'border-gray-300 dark:border-gray-600 hover:border-green-300 dark:hover:border-green-700 hover:shadow-md' }}"
+                    class="relative p-4 sm:p-6 rounded-xl border-2 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 {{ $side === 'yes' ? 'border-green-500 bg-green-50 dark:bg-green-900/20 shadow-lg' : 'border-gray-300 dark:border-gray-600 hover:border-green-300 dark:hover:border-green-700 hover:shadow-md' }}"
                 >
                     <div class="text-center">
                         <div class="text-lg sm:text-xl font-bold text-green-700 dark:text-green-300 mb-2">
@@ -17,7 +17,7 @@
                         <div class="text-sm text-gray-600 dark:text-gray-400 mb-2">
                             {{ $this->calculateOdds($market, 'yes') }}x odds
                         </div>
-                        @if($selectedSide === 'yes')
+                        @if($side === 'yes')
                             <div class="absolute top-3 right-3">
                                 <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
@@ -30,7 +30,7 @@
                 <button 
                     type="button" 
                     wire:click="selectSide('no')"
-                    class="relative p-4 sm:p-6 rounded-xl border-2 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 {{ $selectedSide === 'no' ? 'border-red-500 bg-red-50 dark:bg-red-900/20 shadow-lg' : 'border-gray-300 dark:border-gray-600 hover:border-red-300 dark:hover:border-red-700 hover:shadow-md' }}"
+                    class="relative p-4 sm:p-6 rounded-xl border-2 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 {{ $side === 'no' ? 'border-red-500 bg-red-50 dark:bg-red-900/20 shadow-lg' : 'border-gray-300 dark:border-gray-600 hover:border-red-300 dark:hover:border-red-700 hover:shadow-md' }}"
                 >
                     <div class="text-center">
                         <div class="text-lg sm:text-xl font-bold text-red-700 dark:text-red-300 mb-2">
@@ -39,7 +39,7 @@
                         <div class="text-sm text-gray-600 dark:text-gray-400 mb-2">
                             {{ $this->calculateOdds($market, 'no') }}x odds
                         </div>
-                        @if($selectedSide === 'no')
+                        @if($side === 'no')
                             <div class="absolute top-3 right-3">
                                 <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
@@ -91,7 +91,7 @@
         </div>
 
         <!-- Potential Payout -->
-        @if($selectedSide && $stakeAmount && $stakeAmount >= 100)
+        @if($side && $amount && $amount >= 100)
             <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Potential Payout:</span>
@@ -102,13 +102,13 @@
                 <div class="flex justify-between items-center">
                     <span class="text-sm text-gray-600 dark:text-gray-400">Potential Profit:</span>
                     <span class="text-sm font-medium text-green-600 dark:text-green-400">
-                        ₦{{ number_format($this->calculatePotentialPayout() - $stakeAmount) }}
+                        ₦{{ number_format($this->calculatePotentialPayout() - $amount) }}
                     </span>
                 </div>
                 <div class="mt-3 pt-3 border-t border-blue-200 dark:border-blue-700">
                     <div class="flex justify-between items-center text-xs text-gray-600 dark:text-gray-400">
                         <span>Odds:</span>
-                        <span>{{ $this->calculateOdds($market, $selectedSide) }}x</span>
+                        <span>{{ $this->calculateOdds($market, $side) }}x</span>
                     </div>
                 </div>
             </div>
@@ -122,7 +122,7 @@
                     ₦{{ number_format(auth()->user()->getWalletBalance() / 100) }}
                 </span>
             </div>
-            @if($stakeAmount && ($stakeAmount * 100) > auth()->user()->getWalletBalance())
+            @if($amount && ($amount * 100) > auth()->user()->getWalletBalance())
                 <div class="mt-2 flex items-center text-sm text-red-600 dark:text-red-400">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
@@ -155,7 +155,7 @@
             </button>
             
             <!-- Top Up Link -->
-            @if($stakeAmount && ($stakeAmount * 100) > auth()->user()->getWalletBalance())
+            @if($amount && ($amount * 100) > auth()->user()->getWalletBalance())
                 <a href="{{ route('wallet.index') }}" class="w-full inline-flex items-center justify-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors duration-200">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>

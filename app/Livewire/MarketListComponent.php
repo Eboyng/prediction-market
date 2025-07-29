@@ -149,6 +149,14 @@ class MarketListComponent extends Component
         return round($odds, 2);
     }
 
+    /**
+     * Format currency amount
+     */
+    public function formatCurrency($amount)
+    {
+        return '₦' . number_format($amount / 100, 2);
+    }
+
     public function render()
     {
         return view('livewire.market-list-component', [

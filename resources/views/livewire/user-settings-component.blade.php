@@ -1,41 +1,56 @@
-<div class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-    <!-- Page Header -->
-    <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Account Settings</h1>
-        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-            Manage your account settings, preferences, and security options.
-        </p>
-    </div>
+<div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-6 sm:py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Enhanced Page Header -->
+        <div class="mb-6 sm:mb-8">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
+                        Account Settings
+                    </h1>
+                    <p class="mt-2 text-sm sm:text-base text-gray-600 dark:text-gray-400">
+                        Manage your account preferences and security settings
+                    </p>
+                </div>
+                <div class="mt-4 sm:mt-0">
+                    @livewire('dark-mode-toggle-component')
+                </div>
+            </div>
+        </div>
 
-    <!-- Tab Navigation -->
-    <div class="border-b border-gray-200 dark:border-gray-700 mb-8">
-        <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-            <button wire:click="setActiveTab('profile')" 
-                    class="py-2 px-1 border-b-2 font-medium text-sm {{ $activeTab === 'profile' ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600' }}">
-                Profile
-            </button>
-            
-            <button wire:click="setActiveTab('password')" 
-                    class="py-2 px-1 border-b-2 font-medium text-sm {{ $activeTab === 'password' ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600' }}">
-                Password
-            </button>
-            
-            <button wire:click="setActiveTab('notifications')" 
-                    class="py-2 px-1 border-b-2 font-medium text-sm {{ $activeTab === 'notifications' ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600' }}">
-                Notifications
-            </button>
-            
-            <button wire:click="setActiveTab('security')" 
-                    class="py-2 px-1 border-b-2 font-medium text-sm {{ $activeTab === 'security' ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600' }}">
-                Security
-            </button>
-            
-            <button wire:click="setActiveTab('preferences')" 
-                    class="py-2 px-1 border-b-2 font-medium text-sm {{ $activeTab === 'preferences' ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600' }}">
-                Preferences
-            </button>
-        </nav>
-    </div>
+        <!-- Enhanced Tab Navigation -->
+        <div class="border-b border-gray-200 dark:border-gray-700 mb-6 sm:mb-8">
+            <nav class="-mb-px flex flex-wrap gap-2 sm:gap-0 sm:space-x-8" aria-label="Tabs">
+                <button wire:click="setActiveTab('profile')" 
+                        class="py-2 px-3 sm:px-1 border-b-2 font-medium text-sm transition-all duration-200 rounded-t-lg sm:rounded-none
+                               {{ $activeTab === 'profile' ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 sm:bg-transparent' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 sm:hover:bg-transparent' }}">
+                    Profile
+                </button>
+                
+                <button wire:click="setActiveTab('password')" 
+                        class="py-2 px-3 sm:px-1 border-b-2 font-medium text-sm transition-all duration-200 rounded-t-lg sm:rounded-none
+                               {{ $activeTab === 'password' ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 sm:bg-transparent' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 sm:hover:bg-transparent' }}">
+                    Password
+                </button>
+                
+                <button wire:click="setActiveTab('notifications')" 
+                        class="py-2 px-3 sm:px-1 border-b-2 font-medium text-sm transition-all duration-200 rounded-t-lg sm:rounded-none
+                               {{ $activeTab === 'notifications' ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 sm:bg-transparent' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 sm:hover:bg-transparent' }}">
+                    Notifications
+                </button>
+                
+                <button wire:click="setActiveTab('security')" 
+                        class="py-2 px-3 sm:px-1 border-b-2 font-medium text-sm transition-all duration-200 rounded-t-lg sm:rounded-none
+                               {{ $activeTab === 'security' ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 sm:bg-transparent' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 sm:hover:bg-transparent' }}">
+                    Security
+                </button>
+                
+                <button wire:click="setActiveTab('preferences')" 
+                        class="py-2 px-3 sm:px-1 border-b-2 font-medium text-sm transition-all duration-200 rounded-t-lg sm:rounded-none
+                               {{ $activeTab === 'preferences' ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 sm:bg-transparent' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 sm:hover:bg-transparent' }}">
+                    Preferences
+                </button>
+            </nav>
+        </div>
 
     <!-- Tab Content -->
     <div class="bg-white dark:bg-gray-800 shadow rounded-lg">
