@@ -102,9 +102,14 @@ class MarketDetailComponent extends Component
         return '₦' . number_format($amount / 100, 2);
     }
 
+    #[Title]
+    public function title()
+    {
+        return $this->market->question . ' - PredictNaira';
+    }
+
     public function render()
     {
-        return view('livewire.market-detail-component')
-            ->title($this->market->question . ' - PredictNaira');
+        return view('livewire.market-detail-component');
     }
 }
