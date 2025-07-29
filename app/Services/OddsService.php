@@ -13,7 +13,7 @@ use App\Models\PromoCode;
 class OddsService
 {
     /**
-     * Calculate odds for a market side using AMM formula
+     * Calculate odds for a market side using improved AMM formula
      *
      * @param Market $market
      * @param string $side ('yes' or 'no')
@@ -34,29 +34,35 @@ class OddsService
             }
         }
 
-        // AMM formula with liquidity pool
-        $liquidityPool = 1000000; // 10,000 Naira base liquidity in kobo
-        $totalStakes = $totalYesStakes + $totalNoStakes + $liquidityPool;
+        // Base liquidity pool (50,000 Naira in kobo split equally)
+        $baseLiquidity = 5000000; // 50,000 Naira in kobo
+        $yesPool = $totalYesStakes + ($baseLiquidity / 2);
+        $noPool = $totalNoStakes + ($baseLiquidity / 2);
+        
+        // Ensure minimum liquidity to prevent division by zero
+        $yesPool = max($yesPool, 100000); // Minimum 1,000 Naira
+        $noPool = max($noPool, 100000);   // Minimum 1,000 Naira
+        
+        $totalPool = $yesPool + $noPool;
 
-        if ($totalStakes === 0) {
-            return 2.00; // Default odds when no stakes
-        }
-
-        // Calculate probability using AMM formula
+        // Calculate probability based on pool ratios
         if ($side === 'yes') {
-            $sideStakes = $totalYesStakes + ($liquidityPool / 2);
+            $probability = $noPool / $totalPool; // Inverse relationship for odds
         } else {
-            $sideStakes = $totalNoStakes + ($liquidityPool / 2);
+            $probability = $yesPool / $totalPool; // Inverse relationship for odds
         }
 
-        $probability = $sideStakes / $totalStakes;
-
-        // Prevent extreme odds and ensure minimum/maximum bounds
-        $probability = max(0.05, min(0.95, $probability)); // 5% to 95%
-        $odds = 1 / $probability;
-
-        // Apply house edge (2%)
-        $odds = $odds * 0.98;
+        // Ensure probability bounds (5% to 95%)
+        $probability = max(0.05, min(0.95, $probability));
+        
+        // Calculate fair odds
+        $fairOdds = 1 / $probability;
+        
+        // Apply house edge (3% reduction in odds)
+        $odds = $fairOdds * 0.97;
+        
+        // Ensure minimum odds of 1.05 and maximum of 19.0
+        $odds = max(1.05, min(19.0, $odds));
 
         return round($odds, 2);
     }
